@@ -1,0 +1,5 @@
+query GetBlog($slug: String!) {
+  senna_blog(limit: 1, where: { slug: { _eq: $slug } }) {
+    ...Blog
+  }
+}

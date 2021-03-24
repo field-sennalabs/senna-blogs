@@ -1,0 +1,725 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: query_root
+    mutation: mutation_root
+    subscription: subscription_root
+}
+
+"mutation root"
+type mutation_root {
+    "delete data from the table: \"senna.author\""
+    delete_senna_author(
+        "filter the rows which have to be deleted"
+        where: senna_author_bool_exp!
+    ): senna_author_mutation_response
+    "delete single row from the table: \"senna.author\""
+    delete_senna_author_by_pk(id: String!): senna_author
+    "delete data from the table: \"senna.blog\""
+    delete_senna_blog(
+        "filter the rows which have to be deleted"
+        where: senna_blog_bool_exp!
+    ): senna_blog_mutation_response
+    "delete single row from the table: \"senna.blog\""
+    delete_senna_blog_by_pk(id: String!): senna_blog
+    "insert data into the table: \"senna.author\""
+    insert_senna_author(
+        "the rows to be inserted"
+        objects: [senna_author_insert_input!]!,
+        "on conflict condition"
+        on_conflict: senna_author_on_conflict
+    ): senna_author_mutation_response
+    "insert a single row into the table: \"senna.author\""
+    insert_senna_author_one(
+        "the row to be inserted"
+        object: senna_author_insert_input!,
+        "on conflict condition"
+        on_conflict: senna_author_on_conflict
+    ): senna_author
+    "insert data into the table: \"senna.blog\""
+    insert_senna_blog(
+        "the rows to be inserted"
+        objects: [senna_blog_insert_input!]!,
+        "on conflict condition"
+        on_conflict: senna_blog_on_conflict
+    ): senna_blog_mutation_response
+    "insert a single row into the table: \"senna.blog\""
+    insert_senna_blog_one(
+        "the row to be inserted"
+        object: senna_blog_insert_input!,
+        "on conflict condition"
+        on_conflict: senna_blog_on_conflict
+    ): senna_blog
+    "update data of the table: \"senna.author\""
+    update_senna_author(
+        "sets the columns of the filtered rows to the given values"
+        _set: senna_author_set_input,
+        "filter the rows which have to be updated"
+        where: senna_author_bool_exp!
+    ): senna_author_mutation_response
+    "update single row of the table: \"senna.author\""
+    update_senna_author_by_pk(
+        "sets the columns of the filtered rows to the given values"
+        _set: senna_author_set_input,
+        pk_columns: senna_author_pk_columns_input!
+    ): senna_author
+    "update data of the table: \"senna.blog\""
+    update_senna_blog(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: senna_blog_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: senna_blog_set_input,
+        "filter the rows which have to be updated"
+        where: senna_blog_bool_exp!
+    ): senna_blog_mutation_response
+    "update single row of the table: \"senna.blog\""
+    update_senna_blog_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: senna_blog_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: senna_blog_set_input,
+        pk_columns: senna_blog_pk_columns_input!
+    ): senna_blog
+}
+
+type query_root {
+    "fetch data from the table: \"senna.author\""
+    senna_author(
+        "distinct select on columns"
+        distinct_on: [senna_author_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_author_order_by!],
+        "filter the rows returned"
+        where: senna_author_bool_exp
+    ): [senna_author!]!
+    "fetch aggregated fields from the table: \"senna.author\""
+    senna_author_aggregate(
+        "distinct select on columns"
+        distinct_on: [senna_author_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_author_order_by!],
+        "filter the rows returned"
+        where: senna_author_bool_exp
+    ): senna_author_aggregate!
+    "fetch data from the table: \"senna.author\" using primary key columns"
+    senna_author_by_pk(id: String!): senna_author
+    "fetch data from the table: \"senna.blog\""
+    senna_blog(
+        "distinct select on columns"
+        distinct_on: [senna_blog_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_blog_order_by!],
+        "filter the rows returned"
+        where: senna_blog_bool_exp
+    ): [senna_blog!]!
+    "fetch aggregated fields from the table: \"senna.blog\""
+    senna_blog_aggregate(
+        "distinct select on columns"
+        distinct_on: [senna_blog_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_blog_order_by!],
+        "filter the rows returned"
+        where: senna_blog_bool_exp
+    ): senna_blog_aggregate!
+    "fetch data from the table: \"senna.blog\" using primary key columns"
+    senna_blog_by_pk(id: String!): senna_blog
+}
+
+"columns and relationships of \"senna.author\""
+type senna_author {
+    "An array relationship"
+    blogs(
+        "distinct select on columns"
+        distinct_on: [senna_blog_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_blog_order_by!],
+        "filter the rows returned"
+        where: senna_blog_bool_exp
+    ): [senna_blog!]!
+    "An aggregate relationship"
+    blogs_aggregate(
+        "distinct select on columns"
+        distinct_on: [senna_blog_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_blog_order_by!],
+        "filter the rows returned"
+        where: senna_blog_bool_exp
+    ): senna_blog_aggregate!
+    id: String!
+    name: String!
+    username: String!
+}
+
+"aggregated selection of \"senna.author\""
+type senna_author_aggregate {
+    aggregate: senna_author_aggregate_fields
+    nodes: [senna_author!]!
+}
+
+"aggregate fields of \"senna.author\""
+type senna_author_aggregate_fields {
+    count(columns: [senna_author_select_column!], distinct: Boolean): Int!
+    max: senna_author_max_fields
+    min: senna_author_min_fields
+}
+
+"aggregate max on columns"
+type senna_author_max_fields {
+    id: String
+    name: String
+    username: String
+}
+
+"aggregate min on columns"
+type senna_author_min_fields {
+    id: String
+    name: String
+    username: String
+}
+
+"response of any mutation on the table \"senna.author\""
+type senna_author_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [senna_author!]!
+}
+
+"columns and relationships of \"senna.blog\""
+type senna_blog {
+    "An object relationship"
+    author: senna_author!
+    authorId: String!
+    content: String!
+    createdAt: timestamptz
+    heartCount: Int!
+    id: String!
+    slug: String!
+    title: String!
+}
+
+"aggregated selection of \"senna.blog\""
+type senna_blog_aggregate {
+    aggregate: senna_blog_aggregate_fields
+    nodes: [senna_blog!]!
+}
+
+"aggregate fields of \"senna.blog\""
+type senna_blog_aggregate_fields {
+    avg: senna_blog_avg_fields
+    count(columns: [senna_blog_select_column!], distinct: Boolean): Int!
+    max: senna_blog_max_fields
+    min: senna_blog_min_fields
+    stddev: senna_blog_stddev_fields
+    stddev_pop: senna_blog_stddev_pop_fields
+    stddev_samp: senna_blog_stddev_samp_fields
+    sum: senna_blog_sum_fields
+    var_pop: senna_blog_var_pop_fields
+    var_samp: senna_blog_var_samp_fields
+    variance: senna_blog_variance_fields
+}
+
+"aggregate avg on columns"
+type senna_blog_avg_fields {
+    heartCount: Float
+}
+
+"aggregate max on columns"
+type senna_blog_max_fields {
+    authorId: String
+    content: String
+    createdAt: timestamptz
+    heartCount: Int
+    id: String
+    slug: String
+    title: String
+}
+
+"aggregate min on columns"
+type senna_blog_min_fields {
+    authorId: String
+    content: String
+    createdAt: timestamptz
+    heartCount: Int
+    id: String
+    slug: String
+    title: String
+}
+
+"response of any mutation on the table \"senna.blog\""
+type senna_blog_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [senna_blog!]!
+}
+
+"aggregate stddev on columns"
+type senna_blog_stddev_fields {
+    heartCount: Float
+}
+
+"aggregate stddev_pop on columns"
+type senna_blog_stddev_pop_fields {
+    heartCount: Float
+}
+
+"aggregate stddev_samp on columns"
+type senna_blog_stddev_samp_fields {
+    heartCount: Float
+}
+
+"aggregate sum on columns"
+type senna_blog_sum_fields {
+    heartCount: Int
+}
+
+"aggregate var_pop on columns"
+type senna_blog_var_pop_fields {
+    heartCount: Float
+}
+
+"aggregate var_samp on columns"
+type senna_blog_var_samp_fields {
+    heartCount: Float
+}
+
+"aggregate variance on columns"
+type senna_blog_variance_fields {
+    heartCount: Float
+}
+
+type subscription_root {
+    "fetch data from the table: \"senna.author\""
+    senna_author(
+        "distinct select on columns"
+        distinct_on: [senna_author_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_author_order_by!],
+        "filter the rows returned"
+        where: senna_author_bool_exp
+    ): [senna_author!]!
+    "fetch aggregated fields from the table: \"senna.author\""
+    senna_author_aggregate(
+        "distinct select on columns"
+        distinct_on: [senna_author_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_author_order_by!],
+        "filter the rows returned"
+        where: senna_author_bool_exp
+    ): senna_author_aggregate!
+    "fetch data from the table: \"senna.author\" using primary key columns"
+    senna_author_by_pk(id: String!): senna_author
+    "fetch data from the table: \"senna.blog\""
+    senna_blog(
+        "distinct select on columns"
+        distinct_on: [senna_blog_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_blog_order_by!],
+        "filter the rows returned"
+        where: senna_blog_bool_exp
+    ): [senna_blog!]!
+    "fetch aggregated fields from the table: \"senna.blog\""
+    senna_blog_aggregate(
+        "distinct select on columns"
+        distinct_on: [senna_blog_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [senna_blog_order_by!],
+        "filter the rows returned"
+        where: senna_blog_bool_exp
+    ): senna_blog_aggregate!
+    "fetch data from the table: \"senna.blog\" using primary key columns"
+    senna_blog_by_pk(id: String!): senna_blog
+}
+
+"column ordering options"
+enum order_by {
+    "in ascending order, nulls last"
+    asc
+    "in ascending order, nulls first"
+    asc_nulls_first
+    "in ascending order, nulls last"
+    asc_nulls_last
+    "in descending order, nulls first"
+    desc
+    "in descending order, nulls first"
+    desc_nulls_first
+    "in descending order, nulls last"
+    desc_nulls_last
+}
+
+"unique or primary key constraints on table \"senna.author\""
+enum senna_author_constraint {
+    "unique or primary key constraint"
+    author_pkey
+}
+
+"select columns of table \"senna.author\""
+enum senna_author_select_column {
+    "column name"
+    id
+    "column name"
+    name
+    "column name"
+    username
+}
+
+"update columns of table \"senna.author\""
+enum senna_author_update_column {
+    "column name"
+    id
+    "column name"
+    name
+    "column name"
+    username
+}
+
+"unique or primary key constraints on table \"senna.blog\""
+enum senna_blog_constraint {
+    "unique or primary key constraint"
+    blog_pkey
+    "unique or primary key constraint"
+    blog_slug_key
+}
+
+"select columns of table \"senna.blog\""
+enum senna_blog_select_column {
+    "column name"
+    authorId
+    "column name"
+    content
+    "column name"
+    createdAt
+    "column name"
+    heartCount
+    "column name"
+    id
+    "column name"
+    slug
+    "column name"
+    title
+}
+
+"update columns of table \"senna.blog\""
+enum senna_blog_update_column {
+    "column name"
+    authorId
+    "column name"
+    content
+    "column name"
+    createdAt
+    "column name"
+    heartCount
+    "column name"
+    id
+    "column name"
+    slug
+    "column name"
+    title
+}
+
+"Boolean expression to compare columns of type \"Int\". All fields are combined with logical 'AND'."
+input Int_comparison_exp {
+    _eq: Int
+    _gt: Int
+    _gte: Int
+    _in: [Int!]
+    _is_null: Boolean
+    _lt: Int
+    _lte: Int
+    _neq: Int
+    _nin: [Int!]
+}
+
+"Boolean expression to compare columns of type \"String\". All fields are combined with logical 'AND'."
+input String_comparison_exp {
+    _eq: String
+    _gt: String
+    _gte: String
+    "does the column match the given case-insensitive pattern"
+    _ilike: String
+    _in: [String!]
+    "does the column match the given POSIX regular expression, case insensitive"
+    _iregex: String
+    _is_null: Boolean
+    "does the column match the given pattern"
+    _like: String
+    _lt: String
+    _lte: String
+    _neq: String
+    "does the column NOT match the given case-insensitive pattern"
+    _nilike: String
+    _nin: [String!]
+    "does the column NOT match the given POSIX regular expression, case insensitive"
+    _niregex: String
+    "does the column NOT match the given pattern"
+    _nlike: String
+    "does the column NOT match the given POSIX regular expression, case sensitive"
+    _nregex: String
+    "does the column NOT match the given SQL regular expression"
+    _nsimilar: String
+    "does the column match the given POSIX regular expression, case sensitive"
+    _regex: String
+    "does the column match the given SQL regular expression"
+    _similar: String
+}
+
+"Boolean expression to filter rows from the table \"senna.author\". All fields are combined with a logical 'AND'."
+input senna_author_bool_exp {
+    _and: [senna_author_bool_exp!]
+    _not: senna_author_bool_exp
+    _or: [senna_author_bool_exp!]
+    blogs: senna_blog_bool_exp
+    id: String_comparison_exp
+    name: String_comparison_exp
+    username: String_comparison_exp
+}
+
+"input type for inserting data into table \"senna.author\""
+input senna_author_insert_input {
+    blogs: senna_blog_arr_rel_insert_input
+    id: String
+    name: String
+    username: String
+}
+
+"input type for inserting object relation for remote table \"senna.author\""
+input senna_author_obj_rel_insert_input {
+    data: senna_author_insert_input!
+    "on conflict condition"
+    on_conflict: senna_author_on_conflict
+}
+
+"on conflict condition type for table \"senna.author\""
+input senna_author_on_conflict {
+    constraint: senna_author_constraint!
+    update_columns: [senna_author_update_column!]!
+    where: senna_author_bool_exp
+}
+
+"Ordering options when selecting data from \"senna.author\"."
+input senna_author_order_by {
+    blogs_aggregate: senna_blog_aggregate_order_by
+    id: order_by
+    name: order_by
+    username: order_by
+}
+
+"primary key columns input for table: senna_author"
+input senna_author_pk_columns_input {
+    id: String!
+}
+
+"input type for updating data in table \"senna.author\""
+input senna_author_set_input {
+    id: String
+    name: String
+    username: String
+}
+
+"order by aggregate values of table \"senna.blog\""
+input senna_blog_aggregate_order_by {
+    avg: senna_blog_avg_order_by
+    count: order_by
+    max: senna_blog_max_order_by
+    min: senna_blog_min_order_by
+    stddev: senna_blog_stddev_order_by
+    stddev_pop: senna_blog_stddev_pop_order_by
+    stddev_samp: senna_blog_stddev_samp_order_by
+    sum: senna_blog_sum_order_by
+    var_pop: senna_blog_var_pop_order_by
+    var_samp: senna_blog_var_samp_order_by
+    variance: senna_blog_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"senna.blog\""
+input senna_blog_arr_rel_insert_input {
+    data: [senna_blog_insert_input!]!
+    "on conflict condition"
+    on_conflict: senna_blog_on_conflict
+}
+
+"order by avg() on columns of table \"senna.blog\""
+input senna_blog_avg_order_by {
+    heartCount: order_by
+}
+
+"Boolean expression to filter rows from the table \"senna.blog\". All fields are combined with a logical 'AND'."
+input senna_blog_bool_exp {
+    _and: [senna_blog_bool_exp!]
+    _not: senna_blog_bool_exp
+    _or: [senna_blog_bool_exp!]
+    author: senna_author_bool_exp
+    authorId: String_comparison_exp
+    content: String_comparison_exp
+    createdAt: timestamptz_comparison_exp
+    heartCount: Int_comparison_exp
+    id: String_comparison_exp
+    slug: String_comparison_exp
+    title: String_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"senna.blog\""
+input senna_blog_inc_input {
+    heartCount: Int
+}
+
+"input type for inserting data into table \"senna.blog\""
+input senna_blog_insert_input {
+    author: senna_author_obj_rel_insert_input
+    authorId: String
+    content: String
+    createdAt: timestamptz
+    heartCount: Int
+    id: String
+    slug: String
+    title: String
+}
+
+"order by max() on columns of table \"senna.blog\""
+input senna_blog_max_order_by {
+    authorId: order_by
+    content: order_by
+    createdAt: order_by
+    heartCount: order_by
+    id: order_by
+    slug: order_by
+    title: order_by
+}
+
+"order by min() on columns of table \"senna.blog\""
+input senna_blog_min_order_by {
+    authorId: order_by
+    content: order_by
+    createdAt: order_by
+    heartCount: order_by
+    id: order_by
+    slug: order_by
+    title: order_by
+}
+
+"on conflict condition type for table \"senna.blog\""
+input senna_blog_on_conflict {
+    constraint: senna_blog_constraint!
+    update_columns: [senna_blog_update_column!]!
+    where: senna_blog_bool_exp
+}
+
+"Ordering options when selecting data from \"senna.blog\"."
+input senna_blog_order_by {
+    author: senna_author_order_by
+    authorId: order_by
+    content: order_by
+    createdAt: order_by
+    heartCount: order_by
+    id: order_by
+    slug: order_by
+    title: order_by
+}
+
+"primary key columns input for table: senna_blog"
+input senna_blog_pk_columns_input {
+    id: String!
+}
+
+"input type for updating data in table \"senna.blog\""
+input senna_blog_set_input {
+    authorId: String
+    content: String
+    createdAt: timestamptz
+    heartCount: Int
+    id: String
+    slug: String
+    title: String
+}
+
+"order by stddev() on columns of table \"senna.blog\""
+input senna_blog_stddev_order_by {
+    heartCount: order_by
+}
+
+"order by stddev_pop() on columns of table \"senna.blog\""
+input senna_blog_stddev_pop_order_by {
+    heartCount: order_by
+}
+
+"order by stddev_samp() on columns of table \"senna.blog\""
+input senna_blog_stddev_samp_order_by {
+    heartCount: order_by
+}
+
+"order by sum() on columns of table \"senna.blog\""
+input senna_blog_sum_order_by {
+    heartCount: order_by
+}
+
+"order by var_pop() on columns of table \"senna.blog\""
+input senna_blog_var_pop_order_by {
+    heartCount: order_by
+}
+
+"order by var_samp() on columns of table \"senna.blog\""
+input senna_blog_var_samp_order_by {
+    heartCount: order_by
+}
+
+"order by variance() on columns of table \"senna.blog\""
+input senna_blog_variance_order_by {
+    heartCount: order_by
+}
+
+"Boolean expression to compare columns of type \"timestamptz\". All fields are combined with logical 'AND'."
+input timestamptz_comparison_exp {
+    _eq: timestamptz
+    _gt: timestamptz
+    _gte: timestamptz
+    _in: [timestamptz!]
+    _is_null: Boolean
+    _lt: timestamptz
+    _lte: timestamptz
+    _neq: timestamptz
+    _nin: [timestamptz!]
+}
+
+
+scalar timestamptz

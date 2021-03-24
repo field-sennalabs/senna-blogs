@@ -1,0 +1,5 @@
+query ListBlog($limit: Int, $where: senna_blog_bool_exp!) {
+  senna_blog(limit: $limit, where: $where, order_by: [{ createdAt: desc }]) {
+    ...Blog
+  }
+}

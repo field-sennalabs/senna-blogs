@@ -1,0 +1,8 @@
+mutation UpdateBlog($id: String!, $content: String!, $title: String!) {
+  update_senna_blog_by_pk(
+    _set: { title: $title, content: $content }
+    pk_columns: { id: $id }
+  ) {
+    ...Blog
+  }
+}

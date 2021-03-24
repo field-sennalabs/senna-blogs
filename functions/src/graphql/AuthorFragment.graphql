@@ -1,0 +1,5 @@
+fragment Author on senna_author {
+  id
+  name
+  username
+}

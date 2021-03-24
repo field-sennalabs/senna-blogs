@@ -1,0 +1,19 @@
+mutation CreateBlog(
+  $id: String!
+  $author: String!
+  $content: String!
+  $slug: String!
+  $title: String!
+) {
+  insert_senna_blog_one(
+    object: {
+      id: $id
+      authorId: $author
+      content: $content
+      slug: $slug
+      title: $title
+    }
+  ) {
+    ...Blog
+  }
+}

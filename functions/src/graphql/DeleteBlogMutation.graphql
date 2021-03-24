@@ -1,0 +1,5 @@
+mutation DeleteBlog($id: String!) {
+  delete_senna_blog_by_pk(id: $id) {
+    ...Blog
+  }
+}

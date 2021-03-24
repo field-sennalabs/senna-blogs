@@ -1,0 +1,7 @@
+mutation CreateAuthor($id: String!, $name: String!, $username: String!) {
+  insert_senna_author(objects: { id: $id, name: $name, username: $username }) {
+    returning {
+      ...Author
+    }
+  }
+}

@@ -1,0 +1,8 @@
+mutation GiveHeartToBlogMutation($number: Int!, $id: String!) {
+  update_senna_blog_by_pk(
+    pk_columns: { id: $id }
+    _inc: { heartCount: $number }
+  ) {
+    ...Blog
+  }
+}

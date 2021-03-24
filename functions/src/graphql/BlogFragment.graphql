@@ -1,0 +1,11 @@
+fragment Blog on senna_blog {
+  id
+  slug
+  title
+  content
+  createdAt
+  heartCount
+  author {
+    ...Author
+  }
+}
